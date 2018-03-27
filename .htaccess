@@ -1,0 +1,14 @@
+RewriteEngine on
+DirectoryIndex index.html
+Options -Indexes
+
+#permite rutas como localhost/index.html o locahost/en/index.html o localhost
+RewriteRule ^(.+)/(.+).html$ pages/index.php?idioma=$1 [L]
+RewriteRule ^(.+).html$ pages/index.php?idioma=es
+
+#permite rutas como localhost/en/ o locahost/en
+RewriteRule ^(en|es|fr)/?$ pages/index.php?idioma=$1
+
+#permite acceder a la ruta localhost/products/ o localhost/products
+RewriteRule ^products/?$ pages/products.php?idioma=es
+RewriteRule ^(.+)/products/?$ pages/products.php?idioma=$1
